@@ -31,13 +31,22 @@
                 </script>
             </p>
             <p> Please import external file hello.js here. 
-                
+                <script src ="js/hello.js"></script>
             </p>
         </div>
 
         <div class="practice">
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
+            <script>
+                var a = 9; //string adds the text to the front or end of the second number
+                var b = 10;
+                var c = a + b;
+                document.write("c = " + c)
+
+
+
+            </script>
 
 
         </div>
@@ -45,6 +54,19 @@
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
             <p> Write an image to the page </p>
+            <img src="img/die1.png">
+            <script>
+                
+                for(var i = 1; i< 2; i++){
+                    
+                    document.writeln("<img src=\"img/die2.png\">");
+                    document.writeln("<img src=\"img/die3.png\">");
+                    document.writeln("<img src=\"img/die4.png\">");
+                    document.writeln("<img src=\"img/die5.png\">");
+                    document.writeln("<img src=\"img/die6.png\">");
+
+                }
+            </script>
 
 
             <p> Write a table to the page </p>
@@ -53,9 +75,16 @@
 
         <div class="practice">
             <h1>Window and document object </h1>
+
             <p> Try alert, open, location, url </p>
             <script>
-
+               // window.alert("Warning");
+                document.write(document.URL);
+               // for(var i = 1; i<10; i++){
+                 //   window.open("https://usca.edu/");
+                    
+              //  }
+                
             </script>
 
 
@@ -65,7 +94,17 @@
             <h1> Get textcontent of an element </h1>
             <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2">5 </span> </p>
             <p>Result:
-                <script src="js/arith.js"></script>
+
+                <script >
+                    var sE = document.getElementById("num1");
+                    var n = parseInt(sE.textContent);
+                    var m = document.getElementById("num2").textContent;
+                    var ans = n + m;
+                    document.write(n);
+                    
+                
+                
+                </script>
             </p>
 
         </div>
