@@ -111,12 +111,21 @@
 
         <div class="practice">
             <h1> Get innerHTML of an elemnt</h1>
-            <p id="p1"> Paragraph Number One </p>
-            <p id="p2"> Paragraph Number two </p>
+            <p id="p1" onclick="changeP();"> Paragraph Number One </p>
+            <p id="p2" onclick="changeP2();"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
             <p>Please write JavaScript code to change the content of each paragraph.​
             <p>
-
+/*10/11/2021*/
+            <script>
+                function changeP(){
+                document.getElementById('p1').innerHTML="<i>italic</i>";
+                }
+                function changep2(){
+                document.getElementById('p2').textContent="<i>italic</i>"; //shows the full content in the ""
+                }
+                document.getElementById('p3').innerHTML="<i>italic</i>";
+            </script>
 
         </div>
 
@@ -125,6 +134,15 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
+                    //input
+                    var iE1 = document.getElementsByName('num1')[0];
+                    var iE2 = document.getElementsByName('num2')[0];
+                    //process
+                    var ans = parseInt(iE1.value)+parseFloat(iE2.value);
+                    
+
+                    //display
+                    document.getElementById('result').textContent=ans.toString();
 
 
                 }
@@ -155,16 +173,56 @@
                     </label>
                 </p>
             </form>
+            <script>
+                //event handler
+                function welcome(){
+                    console.log("event fired!!!");
+                    var name = document.getElementById('cName').value;
+
+                    //output
+                    document.getElementById('message').textContent="welcome!! "+name;
+
+                }
+                //register event with the handler
+                var nE = document.getElementById('cName');
+                nE.addEventListener('blur',welcome,false);
+            </script>
 
         </div>
 
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <input type="text" id="five" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="r"> ? </label>
+            
+            <script>
+                function cal() {
+                    //input
+                    var bE1 = document.getElementById('five');
+                    console.log("here in square");
+                    var ans = parseFloat(bE1.value)*parseFloat(bE1.value); //parseFloat converts string to number
+                    
+
+                    //display
+                    document.getElementById('r').textContent=ans.toString();
+
+                } 
+
+                //event
+                var nE = document.getElementById('five');
+                nE.addEventListener('blur',cal,false);
+
+/*Watch the lecture for 10/11/2021 to finish the last few you were to slow to finish Jared and don't forget to close the section with comments like */
+/*End of 10/11/2021 assignment*/
+             </script>
+
+          
 
         </div>
+
+
+
 
         <div class="practice">
             <h1> Difference between textcontent and innerHTML</h1>
@@ -181,7 +239,7 @@
 
 
         </div>
-
+/* 10/13/2021 */
         <div class="practice">
             <h1>Decision statement - If </h1>
             Honda Accord Used Car price estimate,
@@ -202,6 +260,35 @@
 
             <script type="text/javascript">
 
+                // Event handler : change -> getprice
+                function getprice(){
+                    //input
+                    var yearCar = document.getElementById('year').value;
+                    var conditionCar = document.getElementById('condition').value;
+                    var price = 0;
+                    //make decision
+                    if(yearCar == "2003" && conditionCar == "Fair"){
+                        price = 2000;
+                    }else if(yearCar == "2003" && conditionCar == "Good"){
+                        price = 3000;
+                    }
+                    //output
+                    document.getElementById('price').textContent=price.toString();
+                    
+                    if(yearCar == "2004" && conditionCar == "Fair"){
+                        price = 4000;
+
+                    }else if(yearCar == "2004" && conditionCar == "Good"){
+                        price = 4500;
+                    }
+                    document.getElementById('price').textContent=price.toString();
+
+                }
+
+                // Register event
+                document.getElementById('year').addEventListener('change',getprice,false);
+                document.getElementById('condition').addEventListener('change',getprice,false);
+
 
 
             </script>
@@ -213,6 +300,30 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+            <script>
+                // Event handler blur ---> changeColor
+                function changeColor(){
+                    var theme = document.getElementById('theme').value;
+                    var bcolor = "white"
+
+                    switch(theme){
+                        case "warm": bcolor = "green"; break;
+                        case "hot": bcolor = "red"; break;
+                        case "cool": bcolor = "blue"; break;
+                        case "freeze": bcolor = "purple"; break;
+                        case "sunny": bcolor = "yellow"; break;
+                        case "roomtemp": bcolor = "orange"; break;
+
+                        default: bcolor = "white";
+                    }
+
+                    document.body.setAttribute("style", "background-color:" +bcolor);
+
+                }
+                //register event
+                document.getElementById('theme').addEventListener('blur',changeColor,false);
+
+            </script>
 
         </div>
 
@@ -237,11 +348,29 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="button" id = "pbutton" value="Check Premium">
             </p>
             <p id="result">
 
+
             </p>
+            <script>
+                document.getElementById('pbutton').addEventListener('click',getpremium);
+
+                function getpremium(){
+                    // get the radio button value
+                    var e1 = document.querySelector('input[name="coverage"]:checked')
+                    var coverage = parseInt(e1.value);
+                    console.log(coverage);
+
+                    //get teh value from selection box
+
+                    //process
+
+                }
+
+
+            </script>
 
         </div>
 
