@@ -8,6 +8,27 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+        <script>
+            $(document).ready(function() {
+                $('body').hide().fadeIn(3000,function(){alert("done!")});
+                $('img').hide();
+                //how jquery enent works
+                $('h1').dblclick(function(){
+                   // $('h1').keyup(function(e){
+                  //  console.log(e.keyCode);
+                  //  $(this).slideUp();
+                   $(this).text("Hide the section");
+                  // $(this).next().hide();
+                  $(this).parent().children('p').slideToggle();
+                    
+                });
+               // $('input').hide();
+           //   var content = $('h1').text();
+ 
+                
+
+            });
+        </script>
 
 </head>
 
@@ -350,7 +371,7 @@
             <p>
                 <input type="button" id = "pbutton" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="result1">
 
 
             </p>
@@ -363,12 +384,26 @@
                     var coverage = parseInt(e1.value);
                     console.log(coverage);
 
-                    //get teh value from selection box
+                    var e2 = document.getElementById("agegroup").selectedIndex;
+                    console.log("The index is " + e2);
 
-                    //process
+                    // make decisions
+                    var agefactor = 0;
+                    switch(e2){
+                        case 0: agefactor = 0.08;break;
+                        case 1: agefactor = 0.09; break;
+                        case 2: agefactor = 0.11; break;
+                        case 3: agefactor = 0.12; break;
 
+                    }
+                    // calculate the insuracne premium
+//base is 10 dollars
+                    var base = 10;
+                   var premium = base + agefactor*coverage/10000;
+console.log(premium);
+                   document.getElementById('result1').textContent=premium.toString();
                 }
-
+//Need help, does not work
 
             </script>
 
@@ -378,14 +413,60 @@
 
 
         <div class="practice">
-            <h1>For Loop Practice 1 </h1>
-            <p> Display the square of numer 1... N </p>
-            <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
-            <p>
-                <input type="button" value="Click for Square">
-            </p>
 
-        </div>
+            <h1>For Loop Practice 1 </h1>
+            
+            <p> Display the square of numer 1... N </p>
+            
+            <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
+            
+            <p>
+            
+            <input type="button" id="csquare" value="Click for Square">
+            
+            </p>
+            
+            <p id="resultSquare">
+            
+            </p>
+            
+            <script>
+            
+            //bind event
+            
+            document.querySelector('#csquare').addEventListener('click',dosquare);
+            
+            //event handler
+            
+            function dosquare(){
+            
+            var N = parseInt(document.getElementById('inputnumber1').value);
+            
+            for(var i=1; i<=9; i++){
+            
+            result +="<tr>";
+            
+            for(var j=1; j<=9; j++){
+            
+            var isquare = i*j;
+            
+            result +="<td>" + i+"x" +j+ "= " + isquare + "</td>";
+            
+            }
+            
+            result +="<td>";
+            
+            }
+            
+            result +="<table>";
+            
+            document.getElementById('resultSquare').innerHTML=result;
+            
+            }
+            
+            </script>
+            
+            </div>
 
 
         <div class="practice">
@@ -426,7 +507,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img id = "dieimage" src="img/die1.png"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -447,6 +528,24 @@
                     <td id="r6"></td>
                 </tr>
             </table>
+            <script>
+                //event - clieck the button
+                document.getElementById("roll").addEventListener('click',rolldice);
+
+
+                //event andler - roll dice
+                var stats = [0,0,0,0,0,0];
+                function rolldice(){
+                    console.log("action workrs");
+                    var e1 = document.getElementById('dieimage');
+                    var n = Math.floor(Math.random()*6)+1;
+                    e1.setAttribute("src","img/die"+n+".png");
+                    stats[n-1]++;
+                    //display the number in the right place
+                    document.getElementById('r'+n).textContent=stats[n-1].toString();
+
+                }
+            </script>
 
         </div>
 
@@ -468,6 +567,19 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
+            <script>
+                var index = 0; //show the image
+                var imglist = document.querySelectorAll('.img-container-hide');
+                console.log(imglist.length);
+                //state animation
+                setInterval(changepic,3000);
+                function changepic(){
+                    imglist[index].setAttribute('class','img-container-hide');
+                    index++;
+                    index = index % 5;
+                    imglist[index].setAttribute('class','img-container');
+                }
+            </script>
 
         </div>
 
